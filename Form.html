@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Form 03</title>
+    <link rel="stylesheet" href="formcss.css">
+</head>
+
+<body>
+    <form action="#">
+        <section class="container">
+            <div class="registration">
+                <h1 class="reg">registration form</h1>
+            </div>
+            <div>
+                <label for="name">name</label>
+                <input type="text" placeholder="your full name" id="name" name="username" required>
+            </div>
+            <div>
+                <label for="email">Email:</label>
+                <input type="email" name="mail" id="email" required>
+            </div>
+            <div>
+                <label for="age">Age</label>
+                <input type="number" name="age" placeholder="disabled age" disabled id="age" min="5" max="100">
+            </div>
+            <div>
+                <label for="files"> Upload:</label>
+                <input type="file" name="submit" id="files">
+            </div>
+            <div>
+                Password:
+                <input type="password" name="" id="" minlength="8">
+            </div>
+            <div>
+                <p> Are you above 18?</p>
+                <label for="yes">yes i am</label>
+                <input type="radio" name="age" id="yes">
+                <label for="no"> sorry i am not</label>
+                <input type="radio" name="age" id="no">
+            </div>
+            <div>
+                <label for="rm">Remember Me</label>
+                <input type="checkbox" name="remember me" id="rm">
+            </div>
+            <div>
+                <label for="rating">Rating:</label>
+                <input type="range" min="1" max="5" step="1" id="rating">
+                <div>
+                    select color:
+                    <input type="color" name="" id="">
+                </div>
+                <div>
+                    ph-number:
+                    <input type="tel" name="" id="">
+                </div>
+                <label for="selclass"></label>
+                <select name="" id="selclass">
+                    <option disabled selected>select class</option>
+                    <option value="1">class 1</option>
+                    <option value="2">class 2</option>
+                    <option value="3">class 3</option>
+                    <option value="4">class 4</option>
+                    <option value="5">class 5</option>
+                    <option value="6">class 6</option>
+
+                </select>
+                <div>
+                    <label for="teachers">Teachers</label>
+                    <input type="text" id="teachers" list="teacherlists">
+                    <datalist id="teacherlists">
+                        <option value="ram limbu"></option>
+                        <option value="suraj raut"></option>
+                        <option value="ayush rai"></option>
+                        <option value="puja shrestha"></option>
+                        <option value="puran budathoki"></option>
+                        <option value="mohan sumsher"></option>
+                    </datalist>
+                </div>
+                <div>
+                    <label for="msg">Message</label>
+                    <textarea name="" id="msg" placeholder="reach us/ ask us"></textarea>
+                </div>
+                <fieldset>
+                    <legend>
+                        your contact info
+                    </legend>
+                    <label for="numberph">Number</label>
+                    <input type="number" name="ph_no." id="numberph">
+                    <legend>file input</legend>
+                    <label for="file">upload</label>
+                    <input type="file" name="" id="file" multiple accept=".png, .jpg, .jpeg">
+                </fieldset>
+                <div class="sub">
+
+                <input type="submit" value="submit">
+                </div>
+
+    </form>
+    <!-- embedding -->
+    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@sheela_kunwar1/video/7585148868958915848"
+        data-video-id="7585148868958915848" style="max-width: 605px;min-width: 325px;">
+        <section> <a target="_blank" title="@sheela_kunwar1"
+                href="https://www.tiktok.com/@sheela_kunwar1?refer=embed">@sheela_kunwar1</a> <a title="fyp"
+                target="_blank" href="https://www.tiktok.com/tag/fyp?refer=embed">#fyp</a> <a target="_blank"
+                title="♬ original sound - laxu.xyzz"
+                href="https://www.tiktok.com/music/original-sound-7577416905741355798?refer=embed">♬ original sound -
+                laxu.xyzz</a> </section>
+    </blockquote>
+    <script async src="https://www.tiktok.com/embed.js"></script>
+
+    <div class="sub">
+        <input type="submit" value="submit">
+        
+    </div>
+</body>
+
+</html>

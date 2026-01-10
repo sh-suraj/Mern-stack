@@ -1,0 +1,213 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Business Registration</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+
+<body class="min-h-screen bg-gradient-to-br from-slate-100 to-slate-200 flex items-center justify-center px-4">
+
+    <div class="w-full max-w-5xl bg-white rounded-2xl shadow-2xl overflow-hidden grid md:grid-cols-2">
+
+        <!-- LEFT INFO -->
+        <div
+            class="hidden md:flex flex-col justify-center bg-gradient-to-br from-blue-600 to-indigo-700 text-white p-12">
+            <h1 class="text-4xl font-bold mb-6 leading-tight">
+                Register Your <br> Business Account
+            </h1>
+            <p class="text-blue-100 mb-8">
+                Join a verified pharma trading network trusted by professionals.
+            </p>
+
+            <ul class="space-y-4 text-sm">
+                <li class="flex items-center gap-2">✔ Verified businesses only</li>
+                <li class="flex items-center gap-2">✔ Secure & compliant onboarding</li>
+                <li class="flex items-center gap-2">✔ Faster approvals</li>
+            </ul>
+        </div>
+
+        <!-- FORM -->
+        <div class="p-8 md:p-12">
+
+            <!-- PROGRESS -->
+            <div class="mb-10">
+                <div class="flex justify-between text-xs text-gray-500 mb-2">
+                    <span>Account</span>
+                    <span>Business</span>
+                    <span>Verify</span>
+                </div>
+                <div class="w-full bg-gray-200 h-2 rounded-full overflow-hidden">
+                    <div id="progressBar" class="h-2 bg-blue-600 w-1/3 transition-all duration-300"></div>
+                </div>
+            </div>
+
+            <form id="form">
+
+                <!-- STEP 1 -->
+                <div class="step">
+                    <h2 class="text-2xl font-bold mb-6">Account Details</h2>
+
+                    <input class="input" placeholder="Full Name" />
+                    <input class="input" placeholder="Email Address" type="email" />
+
+                    <input id="password" class="input" placeholder="Password" type="password" />
+                    <div class="h-2 bg-gray-200 rounded mb-6">
+                        <div id="strength" class="h-2 rounded transition-all"></div>
+                    </div>
+
+                    <button type="button" onclick="nextStep()" class="btn-primary">
+                        Continue
+                    </button>
+                </div>
+
+                <!-- STEP 2 -->
+                <div class="step hidden">
+                    <h2 class="text-2xl font-bold mb-6">Business Information</h2>
+
+                    <input class="input" placeholder="Business Name" />
+
+                    <select class="input">
+                        <option value="">Select Business Type</option>
+                        <option>Pharmacy</option>
+                        <option>Distributor</option>
+                        <option>Hospital</option>
+                    </select>
+
+                    <input class="input" placeholder="License Number" />
+
+                    <div class="flex gap-4">
+                        <button type="button" onclick="prevStep()" class="btn-outline">Back</button>
+                        <button type="button" onclick="nextStep()" class="btn-primary">Continue</button>
+                    </div>
+                </div>
+
+                <!-- STEP 3 -->
+                <div class="step hidden">
+                    <h2 class="text-2xl font-bold mb-6">Verification</h2>
+
+                    <input type="file" class="input" />
+                    <input class="input" placeholder="Business Address" />
+
+                    <div class="flex gap-4">
+                        <button type="button" onclick="prevStep()" class="btn-outline">Back</button>
+                        <button type="button" onclick="submitForm()" class="btn-success">
+                            Submit Registration
+                        </button>
+                    </div>
+                </div>
+
+                <!-- SUCCESS -->
+                <div class="step hidden text-center">
+                    <h2 class="text-3xl font-bold text-green-600 mb-4">🎉 Success!</h2>
+                    <p class="text-gray-600">
+                        Your registration has been submitted for verification.
+                    </p>
+                </div>
+
+            </form>
+        </div>
+    </div>
+
+    <!-- JS -->
+    <script>
+        const steps = document.querySelectorAll(".step");
+        const progress = document.getElementById("progressBar");
+        const password = document.getElementById("password");
+        const strength = document.getElementById("strength");
+
+        let current = 0;
+
+        function showStep(i) {
+            steps.forEach((s, index) => {
+                s.classList.toggle("hidden", index !== i);
+            });
+            progress.style.width = ((i + 1) / 3) * 100 + "%";
+        }
+
+        function nextStep() {
+            if (!validateStep()) return;
+            current++;
+            showStep(current);
+        }
+
+        function prevStep() {
+            current--;
+            showStep(current);
+        }
+
+        function submitForm() {
+            current++;
+            showStep(current);
+        }
+
+        function validateStep() {
+            const inputs = steps[current].querySelectorAll("input, select");
+            for (let input of inputs) {
+                if (!input.value) {
+                    input.classList.add("border-red-500");
+                    return false;
+                }
+                input.classList.remove("border-red-500");
+            }
+            return true;
+        }
+
+        password?.addEventListener("input", () => {
+            const val = password.value.length;
+            strength.style.width = Math.min(val * 10, 100) + "%";
+            strength.className = val > 8 ? "h-2 bg-green-500 rounded" :
+                val > 4 ? "h-2 bg-yellow-500 rounded" :
+                    "h-2 bg-red-500 rounded";
+        });
+
+        showStep(current);
+    </script>
+
+    <!-- COMPONENT STYLES -->
+    <style>
+        .input {
+            width: 100%;
+            padding: 0.6rem 1rem;
+            border: 1px solid #cbd5e1;
+            border-radius: 0.5rem;
+            margin-bottom: 1rem;
+            outline: none;
+        }
+
+        .input:focus {
+            border-color: #2563eb;
+            box-shadow: 0 0 0 2px #2563eb33;
+        }
+
+        .btn-primary {
+            width: 100%;
+            background: #2563eb;
+            color: white;
+            padding: 0.7rem;
+            border-radius: 0.5rem;
+        }
+
+        .btn-success {
+            width: 100%;
+            background: #16a34a;
+            color: white;
+            padding: 0.7rem;
+            border-radius: 0.5rem;
+        }
+
+        .btn-outline {
+            width: 100%;
+            border: 1px solid #cbd5e1;
+            padding: 0.7rem;
+            border-radius: 0.5rem;
+        }
+    </style>
+
+</body>
+
+</html>
