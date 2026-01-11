@@ -130,3 +130,42 @@ console.log("for each loop");
 decimal.forEach((mydec) => {
   console.log(mydec);
 });
+console.log("=======================Array Map===============================");
+// Map:[x,y,z] =>[a,b,c]
+const squaredList = [];
+decimal.map((mydec) => {
+  const square = mydec * mydec;
+  squaredList.push(square);
+});
+console.log(squaredList);
+
+// type 2
+/** 
+const squaredList = decimal.map((mydec) => {
+  const square = mydec * mydec;
+  return square;
+});
+console.log(squaredList);
+*/
+
+// filter
+const array = [58, 32, 4, 54, 6, 5, 8, 9, 0, 24, 2, 56];
+const filtered = array.filter((element) => element % 2 == 0);
+console.log(filtered);
+
+// sort
+console.log("=======sort============");
+const sorted = array.sort((a, b) => b - a); //ascending: a-b descending:b-a
+console.log(sorted);
+
+// find
+console.log("=======find============");
+const finded = array.find((a) => a > 50); //find a data greater than 50
+console.log(finded);
+//includes , every, some => boolean
+const allfound = array.every((a) => a > 50); //find if all data are greater than 50
+const somefound = array.some((a) => a > 50); //find if all data are greater than 50
+const included = array.includes((a) => a > 50); //find if all data are greater than 50
+console.log(allfound);
+console.log(somefound);
+console.log(included);
