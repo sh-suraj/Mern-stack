@@ -1,9 +1,9 @@
-# Ecommerce
+# Node.js
 
-# contents: HTML/CSS/JS/TS/Tailwind css/ node js
+## javascript
 
-# Author: github.com/SRIT99
-index
-form
-table 
-positon
+- Programming Language
+- High level, interpreted, multi-paradigm, dynamic
+- Built on c++
+- node.js used to build APIs
+- used to build frontend web pages (add interactivity)
