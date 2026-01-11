@@ -17,15 +17,19 @@
 # Architecture
 
 - single threaded, event driven architecture
+- extremely fast even for a single threaded architecture
+- Non-blocking I/O Operations
+
+- 
   flowchart TD
-  A[Client<br/>(Browser / Mobile App)] -->|HTTP Requests| B[Routes<br/>(Express Router)]
+  A[Client (Browser / Mobile App)] -->|HTTP Requests| B[Routes (Express Router)]
 
       B --> C[Controllers]
       C --> D[Services / Business Logic]
-      D --> E[Models<br/>(ORM / Schema)]
-      E --> F[(Database)]
+      D --> E[Models (ORM / Schema)]
+      E --> F[Database]
 
-      C --> G[Middlewares<br/>(Auth, Validation, Logging)]
+      C --> G[Middlewares(Auth, Validation, Logging)]
       G --> C
 
-      D --> H[External Services<br/>(APIs, Email, Payment)]
+      D --> H[External Services(APIs, Email, Payment)]
