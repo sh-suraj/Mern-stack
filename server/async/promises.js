@@ -13,4 +13,25 @@ fs.readFile("data.txt", "utf8")
   .catch((error) => {
     //error
     console.log(error);
+  })
+  .finally(() => {
+    console.log("fs readfile has been excecuted");
+  });
+
+fs.readFile("users.json", "utf8")
+  .then((users) => {
+    //success
+    console.log(users);
+    return fs.readFile("post.json", "utf8");
+  })
+  .then((posts) => {
+    console.log(posts);
+    return fs.readFile("comments.json", "utf8");
+  })
+  .then((comments) => {
+    console.log(comments);
+  })
+  .catch((error) => {
+    //error
+    console.log(error);
   });
